@@ -1,0 +1,40 @@
+Pour comprendre comment on obtient 80 paramètres sur la première couche de convolution, examinons la couche de convolution en détail.
+
+Voici la ligne de code qui crée la première couche de convolution :
+
+```python
+model.add(keras.layers.Conv2D(8, (3, 3), activation='relu'))
+```
+
+Cette ligne ajoute une couche de convolution 2D avec les spécifications suivantes :
+- **8 filtres** (ou noyaux) de convolution.
+- Chaque filtre a une taille de **3x3**.
+- La fonction d'activation utilisée est **ReLU**.
+
+Pour calculer le nombre total de paramètres dans cette couche, nous devons prendre en compte les poids et les biais de chaque filtre.
+
+### Calcul des paramètres
+
+1. **Poids des filtres** :
+   - Chaque filtre a une taille de 3x3.
+   - Comme l'entrée est une image en niveaux de gris (1 canal), chaque filtre a 1 canal.
+   - Donc, chaque filtre a \(3 \times 3 \times 1 = 9\) poids.
+
+2. **Biais** :
+   - Chaque filtre a un biais.
+   - Donc, il y a 1 biais par filtre.
+
+3. **Total par filtre** :
+   - Chaque filtre a \(9\) poids + \(1\) biais = \(10\) paramètres.
+
+4. **Total pour 8 filtres** :
+   - Il y a 8 filtres, donc le total des paramètres est \(8 \times 10 = 80\).
+
+### Détail des calculs
+
+- **Poids** : \(3 \times 3 \times 1 = 9\) (par filtre)
+- **Biais** : \(1\) (par filtre)
+- **Total par filtre** : \(9 + 1 = 10\)
+- **Total pour 8 filtres** : \(8 \times 10 = 80\)
+
+Donc, la première couche de convolution a 80 paramètres au total.
